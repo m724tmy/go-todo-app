@@ -1,15 +1,17 @@
-<form action="/todo" method="POST">
-  <input type="text" name="task" placeholder="新しいタスク" required>
-  <button type="submit">追加</button>
-</form>
-<hr>
-<div>
-  {{ range .todos }}
-    <div class="todo-item">
-      <strong>{{ .Task }}</strong>
-      <a href="/todo/delete/{{ .ID }}">削除</a>
-    </div>
-  {{ else }}
-    <p>タスクはありません。</p>
-  {{ end }}
-</div>
+{{ define "content" }}
+  <form action="/todo" method="POST">
+    <input type="text" name="task" placeholder="新しいタスク" required>
+    <button type="submit">追加</button>
+  </form>
+  <hr>
+  <div>
+    {{ range .todos }}
+      <div class="todo-item">
+        <strong>{{ .Task }}</strong>
+        <a href="/todo/delete/{{ .ID }}">削除</a>
+      </div>
+    {{ else }}
+      <p>タスクはありません。</p>
+    {{ end }}
+  </div>
+{{ end }}
